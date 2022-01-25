@@ -1,0 +1,53 @@
+Objective: Find the fastest solution to a given slider puzzle, store the moves it takes to get there
+
+1)Board changes/additions
+    *moveHistory stringBuilder data field to keep track of history
+    *showMe method
+        -moves as an input
+        -displays instance board and moves one at a time
+            --uses the board class makem
+            --uses the board to string
+            --iterate through characters in moves input, using each char element as input to slider method
+
+
+3)Create generic Queue Class
+    -data fields of head node, tail node, current size, added, removed
+    -final integer of MAX_SIZE for current size
+
+    -contains nested private node class
+        --data fields of value, next, previous
+
+    -methods:
+        *enqueue-adds new object to queue tail and increases current size, total added by 1
+                -if head is null, make the head the added object
+                -return the boolean of if current size is less than QUEUE_LIMIT
+        *dequeue- removes head and decreases current size by 1, adds 1 to total removed
+                - makes head point to head.next
+                -returns dequeued node
+        *getInfo- returns current size, totals removed and added
+        *isEmpty- gives boolean of whether queue is empty
+
+
+
+4)Solve Class with board object as input
+      *solveBoard Method: finds the shortest path to solve board using the given algorithm
+                -save string of moves as variable inside to put into showMe method
+                -Creates queue of boards to keep track of all possible boards
+                -creates stringbuilder and adds letter
+                -uses board constructor with board as input to copy current board before makeing move
+                -create lastMove variable to keep track of previous move
+                -makes move in all possible moves, if makemove returns true then copy the new board and add it to queue
+                -uses movehistory's last character as input for last move
+
+
+
+5)Use a solve class instance to solve each board in the Game.java file
+    -playGiven calls Solver.solveBoard with playgiven input board as input
+
+6)Make moveFromLetters method to reduce redundancy from the jumble and showme method
+
+7)Edit playGiven to call Solve method
+
+*Possibly remove lines using node.prev data field
+
+**Change MAX info to limit based on the amount of moves
